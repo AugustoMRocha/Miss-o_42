@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It’s over 9000 - Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .calculator input, .calculator select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .calculator button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="number" id="leftOperand" placeholder="Número esquerdo" />
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="number" id="rightOperand" placeholder="Número direito" />
+        <br />
+        <button onclick="calculate()">Try me!</button>
+    </div>
+
+    <script>
+        // Função para realizar o cálculo
+        function calculate() {
+            const leftOperand = document.getElementById('leftOperand').value;
+            const rightOperand = document.getElementById('rightOperand').value;
+            const operator = document.getElementById('operator').value;
+
+            // Verificando se os operandos são válidos
+            if (leftOperand < 0 || rightOperand < 0 || !Number.isInteger(Number(leftOperand)) || !Number.isInteger(Number(rightOperand))) {
+                alert('Error :(');
+                return;
+            }
+
+            // Verificando divisões e módulo por zero
+            if ((operator === '/' || operator === '%') && rightOperand == 0) {
+                alert("It’s over 9000!");
+                return;
+            }
+
+            // Calculando o resultado
+            let result;
+            switch (operator) {
+                case '+':
+                    result = Number(leftOperand) + Number(rightOperand);
+                    break;
+                case '-':
+                    result = Number(leftOperand) - Number(rightOperand);
+                    break;
+                case '*':
+                    result = Number(leftOperand) * Number(rightOperand);
+                    break;
+                case '/':
+                    result = Number(leftOperand) / Number(rightOperand);
+                    break;
+                case '%':
+                    result = Number(leftOperand) % Number(rightOperand);
+                    break;
+            }
+
+            // Exibindo o resultado em uma mensagem de alerta e no console
+            alert('Resultado: ' + result);
+            console.log(result);
+        }
+
+        // Função para mostrar o pop-up a cada 30 segundos
+        setInterval(function() {
+            alert('Please, use me...');
+        }, 30000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List with jQuery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #ft_list {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            min-height: 100px;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+
+        .task {
+            padding: 10px;
+            background-color: #e0e0e0;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .task:hover {
+            background-color: #d0d0d0;
+        }
+
+        #addTaskButton {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #addTaskButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div id="ft_list"></div>
+    <button id="addTaskButton">Adicionar tarefa</button>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const ftList = $('#ft_list');
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+            // Renderiza as tarefas salvas no localStorage ao carregar a página
+            tasks.forEach(task => {
+                const taskDiv = $('<div>')
+                    .addClass('task')
+                    .text(task)
+                    .click(function () {
+                        if (confirm('Deseja remover esta tarefa?')) {
+                            const index = tasks.indexOf($(this).text());
+                            if (index > -1) {
+                                tasks.splice(index, 1);
+                                localStorage.setItem('tasks', JSON.stringify(tasks));
+                            }
+                            $(this).remove();
+                        }
+                    });
+                ftList.append(taskDiv);
+            });
+
+            // Adiciona uma nova tarefa
+            $('#addTaskButton').click(function () {
+                const task = prompt('Digite a nova tarefa:');
+                if (task) {
+                    tasks.push(task);
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+                    const taskDiv = $('<div>')
+                        .addClass('task')
+                        .text(task)
+                        .click(function () {
+                            if (confirm('Deseja remover esta tarefa?')) {
+                                const index = tasks.indexOf($(this).text());
+                                if (index > -1) {
+                                    tasks.splice(index, 1);
+                                    localStorage.setItem('tasks', JSON.stringify(tasks));
+                                }
+                                $(this).remove();
+                            }
+                        });
+                    ftList.prepend(taskDiv);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

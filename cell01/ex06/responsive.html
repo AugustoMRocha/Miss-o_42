@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Responsiva</title>
+    <style>
+        /* Garantir que o html e body ocupem 100% da tela */
+        html, body {
+            height: 100%; /* Ocupa 100% da altura da tela */
+            margin: 0;    /* Remove a margem padrão */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Para garantir que a tabela ocupe toda a altura */
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%;   /* A tabela ocupa 100% da largura da tela */
+            height: 100%;  /* A tabela ocupa 100% da altura da tela */
+            border-collapse: collapse; /* Para não ter espaços entre as células */
+        }
+
+        /* Estilo das células */
+        td {
+            width: 50%; /* Cada célula vai ocupar metade da largura da tabela */
+            height: 100%; /* As células ocupam toda a altura disponível */
+            text-align: center;
+            vertical-align: middle; /* Alinha o texto verticalmente no meio */
+            font-size: 24px;  /* Tamanho da fonte */
+            color: white;     /* Cor do texto */
+            padding: 20px;    /* Espaço interno das células */
+        }
+
+        /* Estilos para cada célula */
+        .celula1 {
+            background-color: #4CAF50; /* Cor verde para a primeira célula */
+        }
+        .celula2 {
+            background-color: #FF6347; /* Cor vermelha para a segunda célula */
+        }
+
+        /* Responsividade: quando a tela for menor que 600px */
+        @media (max-width: 600%) {
+            table {
+                display: block; /* A tabela se comporta como um bloco */
+                width: 100%;
+            }
+
+            td {
+                width: 100%;  /* As células vão ocupar toda a largura */
+                height: 50%;  /* Cada célula ocupará metade da altura da tela */
+                font-size: 16px; /* Texto um pouco menor */
+                padding: 10px; /* Menos espaço interno nas células para telas menores */
+            }
+        }
+    </style>
+
+    </head>
+<body>
+
+    <!-- A tabela ocupa 100% da tela -->
+    <table>
+        <tr>
+            <td class="celula1">verde</td>
+            <td class="celula2">vermelho</td>
+        </tr>
+    </table>
+
+</body>
+</html>

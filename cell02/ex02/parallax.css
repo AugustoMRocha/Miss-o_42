@@ -1,0 +1,53 @@
+/* Define a altura mínima da página */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para as seções com efeito Parallax */
+.parallax {
+    position: relative;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh; /* Ajusta para ocupar a tela inteira */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#section1 {
+    background-image: url('r10.jpg'); /* Substitua por sua imagem */
+}
+
+#section2 {
+    background-image: url('r10gol.jpg'); /* Substitua por sua imagem */
+}
+
+/* Estilo para a mensagem centralizada */
+.message h1 {
+    text-align: center;
+    font-size: 3rem;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para legibilidade */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Segunda seção (bloco preto com mensagem) */
+.black-block {
+    background-color: black;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Certifique-se de que o conteúdo seja responsivo */
+@media (max-width: 768px) {
+    .message h1 {
+        font-size: 2rem;
+    }
+}

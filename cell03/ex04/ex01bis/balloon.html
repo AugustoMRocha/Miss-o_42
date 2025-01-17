@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explode Balloon with jQuery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="balloon"></div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        let size = 200;
+
+        $('.balloon').click(function () {
+            size += 10;
+
+            if (size > 420) {
+                alert('BOOM!');
+                size = 200;
+            }
+
+            $(this).css({
+                width: size + 'px',
+                height: size + 'px',
+                backgroundColor: 'blue',
+            });
+        });
+
+        $('.balloon').mouseleave(function () {
+            if (size > 200) size -= 5;
+
+            $(this).css({
+                width: size + 'px',
+                height: size + 'px',
+                backgroundColor: 'red',
+            });
+        });
+    </script>
+</body>
+</html>
+
+
